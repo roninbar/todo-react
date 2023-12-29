@@ -1,4 +1,4 @@
-export default function Table() {
+export default function Table({ items }) {
     return (
         <table>
             <thead>
@@ -8,7 +8,15 @@ export default function Table() {
                     <th>Who</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                {items.map(({what, when, who}) => (
+                    <tr>
+                        <td>{what}</td>
+                        <td>{when}</td>
+                        <td>{who}</td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     );
 }

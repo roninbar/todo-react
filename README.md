@@ -68,3 +68,39 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Sequence Diagram
+
+```mermaid
+sequenceDiagram
+actor User
+participant App
+participant Form
+participant inputWhat as <input name="what"/>
+participant inputWhen as <input name="when"/>
+participant inputWho as <input name="who"/>
+participant Table
+loop Every time `items` change
+App->>Table: <Table items={items} />
+App->>Form: <Form onSubmit={handleSubmit} />
+Form->>inputWhat: <input name="what" value={what} onChange={onChangeWhat} />
+Form->>inputWhen: <input name="when" value={when} onChange={onChangeWhen} />
+Form->>inputWho: <input name="who" value={who} onChange={onChangeWho} />
+User->>inputWhat: fill
+inputWhat->>+Form: onChangeWhat
+Form->>Form: setWhat
+Form-->>-inputWhat: 
+User->>inputWhen: fill
+inputWhen->>+Form: onChangeWhen
+Form->>Form: setWhen
+Form-->>-inputWhen: 
+User->>inputWho: fill
+inputWho->>+Form: onChangeWho
+Form->>Form: setWho
+Form-->>-inputWho: 
+User->>Form: submit
+Form->>+App: handleSubmit(item)
+App->>App: setItems([...items, item])
+App-->>-Form: return
+end
+```

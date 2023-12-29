@@ -1,13 +1,20 @@
 import Form from './Form';
 import Table from './Table';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+    const [items, setItems] = useState([]);
+
+    function handleSubmit(item) {
+        setItems([...items, item]);
+    }
+
     return (
         <>
-            <Form></Form>
+            <Form onSubmit={handleSubmit} />
             <br />
-            <Table></Table>
+            <Table items={items} />
         </>
     );
 }
