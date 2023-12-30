@@ -5,13 +5,13 @@ export default function Form({ onSubmit }) {
     const [when, setWhen] = useState('');
     const [who, setWho] = useState('');
 
-    function onChangeWhat({ target: { value } }) {
+    function handleChangeWhat({ target: { value } }) {
         setWhat(value);
     }
-    function onChangeWhen({ target: { value } }) {
+    function handleChangeWhen({ target: { value } }) {
         setWhen(value);
     }
-    function onChangeWho({ target: { value } }) {
+    function handleChangeWho({ target: { value } }) {
         setWho(value);
     }
     /**
@@ -29,17 +29,17 @@ export default function Form({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <div>
                 <label for="what">What: </label>
-                <input type="text" name="what" id="what" value={what} onChange={onChangeWhat} />
+                <input type="text" name="what" id="what" value={what} onChange={handleChangeWhat} />
             </div>
             <br />
             <div>
                 <label for="when">When: </label>
-                <input type="date" name="when" id="when" value={when} onChange={onChangeWhen} />
+                <input type="date" name="when" id="when" value={when} onChange={handleChangeWhen} />
             </div>
             <br />
             <div>
                 <label for="who">Who: </label>
-                <input type="text" name="who" id="who" value={who} onChange={onChangeWho} />
+                <input type="text" name="who" id="who" value={who} onChange={handleChangeWho} />
             </div>
             <br />
             <div>

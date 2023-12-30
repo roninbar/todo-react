@@ -83,23 +83,23 @@ participant Table
 loop Every time `items` change
 App->>Table: <Table items={items} />
 App->>Form: <Form onSubmit={handleSubmit} />
-Form->>inputWhat: <input name="what" value={what} onChange={onChangeWhat} />
-Form->>inputWhen: <input name="when" value={when} onChange={onChangeWhen} />
-Form->>inputWho: <input name="who" value={who} onChange={onChangeWho} />
+Form->>inputWhat: <input name="what" value={what} onChange={handleChangeWhat} />
+Form->>inputWhen: <input name="when" value={when} onChange={handleChangeWhen} />
+Form->>inputWho: <input name="who" value={who} onChange={handleChangeWho} />
 User->>inputWhat: fill
-inputWhat->>+Form: onChangeWhat
+inputWhat->>+Form: handleChangeWhat
 Form->>Form: setWhat
 Form-->>-inputWhat: 
 User->>inputWhen: fill
-inputWhen->>+Form: onChangeWhen
+inputWhen->>+Form: handleChangeWhen
 Form->>Form: setWhen
 Form-->>-inputWhen: 
 User->>inputWho: fill
-inputWho->>+Form: onChangeWho
+inputWho->>+Form: handleChangeWho
 Form->>Form: setWho
 Form-->>-inputWho: 
-User->>Form: submit
-Form->>+App: handleSubmit(item)
+User->>Form: s0ubmit
+Form->>+App: handleSubmit({ what, when, who })
 App->>App: setItems([...items, item])
 App-->>-Form: return
 end
